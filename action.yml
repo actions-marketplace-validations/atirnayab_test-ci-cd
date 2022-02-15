@@ -1,0 +1,22 @@
+name: testing actions
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+jobs:
+  deploy-doc:
+    if: ${{ github.event_name == 'push' }}
+    name: Deploy API documentation on Bump
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: bump-sh/github-action@v1
+        with:
+          doc: test
+          token: 38c2a85163f4c353563b35aefcfd7392
+          file: doc/api-documentation.yml
