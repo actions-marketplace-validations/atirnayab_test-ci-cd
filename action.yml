@@ -9,7 +9,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: "14"
+          node-version: "16"
 inputs:
   file:
     description: "Relative path to the documentation file"
@@ -20,7 +20,7 @@ inputs:
   token:
     description: "Documentation token. Can be found in the documentation settings on https://bump.sh"
 runs:
-  using: "node14"
+  using: "node16"
   main: "index.js"
 branding:
   color: gray-dark
