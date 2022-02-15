@@ -19,10 +19,10 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: "16"
-      - run: |
-        echo "file: ${{ inputs.file }}"
-        echo "doc: ${{ inputs.doc }}"
-        echo "token: ${{ inputs.token }}"
+      - run: echo "file: ${{ inputs.file }}"
+      - run: echo "file: ${{ inputs.doc }}"
+      - run: echo "file: ${{ inputs.token }}"
+        shell: bash
 runs:
   using: "node16"
   main: "index.js"
