@@ -20,9 +20,9 @@ jobs:
         with:
           node-version: "16"
       - run: |
-        echo "file: ${{ github.event.inputs.file }}"
-        echo "doc: ${{ github.event.inputs.doc }}"
-        echo "token: ${{ github.event.inputs.token }}"
+        echo "file: ${{ inputs.file }}"
+        echo "doc: ${{ inputs.doc }}"
+        echo "token: ${{ inputs.token }}"
 runs:
   using: "node16"
   main: "index.js"
