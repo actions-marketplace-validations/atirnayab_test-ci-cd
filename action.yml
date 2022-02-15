@@ -1,5 +1,13 @@
 name: atirnayab document upload
 description: this is sample to test market place
+jobs:
+  api-diff:
+    name: Check API diff
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - name: Checkout
+        uses: actions/checkout@v2
 inputs:
   file:
     description: "Relative path to the documentation file"
