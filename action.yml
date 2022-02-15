@@ -21,7 +21,7 @@ inputs:
     description: "Documentation token. Can be found in the documentation settings on https://bump.sh"
 runs:
   using: "node16"
-  main: "node index.js"
+  main: "index.js"
 branding:
   color: gray-dark
   icon: book-open
