@@ -1,4 +1,4 @@
-name: testing actions
+name: codebuddy
 on:
   push:
     branches:
