@@ -5,9 +5,6 @@ inputs:
     description: "Documentation id. Can be found in the documentation settings on https://bump.sh"
   token:
     description: "Documentation token. Can be found in the documentation settings on https://bump.sh"
-runs:
-  using: "node12"
-  main: "index.js"
 branding:
   color: gray-dark
   icon: book-open
