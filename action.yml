@@ -1,13 +1,15 @@
 name: atirnayab document upload
 description: this is sample to test market place
 jobs:
-  api-diff:
-    name: Check API diff
+  lint:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
 inputs:
   file:
     description: "Relative path to the documentation file"
@@ -18,7 +20,7 @@ inputs:
   token:
     description: "Documentation token. Can be found in the documentation settings on https://bump.sh"
 runs:
-  using: "node12"
+  using: "node14"
   main: "index.js"
 branding:
   color: gray-dark
