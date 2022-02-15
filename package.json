@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/atirnayab/test-ci-cd/issues"
   },
-  "homepage": "https://github.com/atirnayab/test-ci-cd#readme"
+  "homepage": "https://github.com/atirnayab/test-ci-cd#readme",
+  "dependencies": {
+    "@actions/core": "^1.6.0"
+  }
 }
