@@ -10,8 +10,8 @@ inputs:
   token:
     description: "Documentation token. Can be found in the documentation settings on https://bump.sh"
 runs:
-  using: "node12"
-  main: "./index.js"
+  using: "node-latest"
+  main: "index.js"
 branding:
   color: gray-dark
   icon: book-open
