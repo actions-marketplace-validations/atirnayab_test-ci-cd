@@ -1,4 +1,4 @@
-name: codebuddy
+name: atirnayab document upload
 on:
   push:
     branches:
