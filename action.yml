@@ -1,10 +1,6 @@
 name: atirnayab document upload
 description: this is sample to test market place
 inputs:
-  file:
-    description: "Relative path to the documentation file"
-    required: true
-    default: api-contract.yml
   doc:
     description: "Documentation id. Can be found in the documentation settings on https://bump.sh"
   token:
