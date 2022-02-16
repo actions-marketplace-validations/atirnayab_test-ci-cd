@@ -22,7 +22,7 @@ jobs:
       - name: install dependency
         with:
           node-version: "16"
-        run: npm install @actions/core
+        run: echo "abcdsdf"
 
       - name: echo check
         run: echo "hello"
