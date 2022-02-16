@@ -13,6 +13,9 @@ inputs:
   testtoken:
     description: "custom token"
     required: true
+  testtoken2:
+    description: "custom token"
+    required: true
 jobs:
   installNode:
     runs-on: ubuntu-latest

