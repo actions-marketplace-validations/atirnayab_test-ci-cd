@@ -1,34 +1,24 @@
-name: atirnayab document upload
-description: this is sample to test market place
-inputs:
-  file:
-    description: "Relative path to the documentation file"
-    required: true
-  doc:
-    description: "Documentation id. Can be found in the documentation settings on"
-    required: true
-  token:
-    description: "Documentation token. Can be found in the documentation settings on"
-    required: true
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
 jobs:
-  installNode:
+  build:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
     steps:
       - uses: actions/checkout@v2
-      - name: Setup Node.js
+      - name: Use Node.js
         uses: actions/setup-node@v2
         with:
           node-version: "16"
-      - name: install dependency
-        with:
-          node-version: "16"
-        run: echo "abcdsdf"
-
-      - name: echo check
-        run: echo "hello"
-runs:
-  using: "node16"
-  main: "index.js"
-branding:
-  color: gray-dark
-  icon: book-open
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: echo "hellow asdfas"
