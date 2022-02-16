@@ -4783,7 +4783,7 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const core = __nccwpck_require__(2186);
-const axios = (__nccwpck_require__(6545)["default"]);
+const axios = __nccwpck_require__(6545);
 const { readFileSync } = __nccwpck_require__(7147);
 
 console.log("inside");

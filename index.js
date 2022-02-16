@@ -1,5 +1,5 @@
 const core = require("@actions/core");
-const axios = require("axios").default;
+const axios = require("axios");
 const { readFileSync } = require("fs");
 
 console.log("inside");
