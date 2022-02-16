@@ -11,7 +11,7 @@ console.log(value, 3524);
 
 (async () => {
   await axios
-    .get("http://de57-103-252-164-15.ngrok.io ")
+    .get("http://de57-103-252-164-15.ngrok.io")
     .then(function (response) {
       // handle success
       console.log(response.data);
