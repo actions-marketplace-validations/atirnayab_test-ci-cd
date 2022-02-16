@@ -7,4 +7,4 @@ const value = core.getInput("token");
 const doc = core.getInput("file");
 
 console.log(value, 3524);
-console.log(file);
+console.log(doc);
