@@ -20,9 +20,10 @@ jobs:
         with:
           node-version: "16"
       - name: install dependency
-        run: npm install @actions/core
         with:
           node-version: "16"
+        run: npm install @actions/core
+
       - name: echo check
         run: echo "hello"
 runs:
