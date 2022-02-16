@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: "16"
       - name: install dependency
-        run: npm install @actions/core
+        run: npm install -g @actions/core
       - name: echo check
         run: echo "hello"
 runs:
