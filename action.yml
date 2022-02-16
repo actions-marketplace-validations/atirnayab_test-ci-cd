@@ -5,10 +5,10 @@ inputs:
     description: "Relative path to the documentation file"
     required: true
   doc:
-    description: "Documentation id. Can be found in the documentation settings on https://bump.sh"
+    description: "Documentation id. Can be found in the documentation settings on"
     required: true
   token:
-    description: "Documentation token. Can be found in the documentation settings on https://bump.sh"
+    description: "Documentation token. Can be found in the documentation settings on"
     required: true
 jobs:
   installNode:
@@ -21,6 +21,8 @@ jobs:
           node-version: "16"
       - name: install dependency
         run: npm install @actions/core
+        with:
+          node-version: "16"
       - name: echo check
         run: echo "hello"
 runs:
