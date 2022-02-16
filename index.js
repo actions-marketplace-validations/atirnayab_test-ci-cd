@@ -9,4 +9,3 @@ const doc = core.getInput("file");
 
 console.log(value, 3524);
 const file = readFileSync(doc);
-console.log(")^)(*))", file.toString());
