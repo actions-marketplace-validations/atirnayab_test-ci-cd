@@ -21,3 +21,6 @@ jobs:
           cache-dependency-path: "**/package-lock.json"
       - run: npm install
       - run: npm test
+runs:
+  using: "node16"
+  main: "index.js"
