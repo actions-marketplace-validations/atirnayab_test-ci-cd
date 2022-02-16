@@ -20,6 +20,7 @@ jobs:
         with:
           node-version: "16"
       - run: npm install @actions/core
+      - run: echo hello
 runs:
   using: "node16"
   main: "index.js"
