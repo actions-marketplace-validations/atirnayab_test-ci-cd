@@ -19,8 +19,10 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: "16"
-      - run: npm install @actions/core
-      - run: echo "hello"
+      - name: install dependency
+        run: npm install @actions/core
+      - name: echo check
+        run: echo "hello"
 runs:
   using: "node16"
   main: "index.js"
