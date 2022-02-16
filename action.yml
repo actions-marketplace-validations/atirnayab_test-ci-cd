@@ -5,22 +5,25 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x, 14.x, 16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
           node-version: "14"
-          cache: "npm"
-          cache-dependency-path: "package-lock.json"
-      - run: npm install -g @actions/core
-      - run: npm test
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: npm-${{ hashFiles('package-lock.json') }}
+          restore-keys: npm-
+
+      - name: Install dependencies
+        run: npm i --ignore-scripts
 runs:
   using: "node16"
   main: "index.js"
