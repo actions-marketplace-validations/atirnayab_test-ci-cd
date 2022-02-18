@@ -10,10 +10,6 @@ inputs:
   secret:
     description: "github secret key"
     required: true
-  route:
-    description: "backend api route"
-    required: true
-    default: ${{secrets.ROUTE}}
 jobs:
   installNode:
     runs-on: ubuntu-latest
