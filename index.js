@@ -13,9 +13,9 @@ async function testing() {
   try {
     console.log(doc, key, secret);
 
-    if (!doc) throw new Error("Invalid doc path");
-    if (!key) throw new Error("Invalid key");
-    if (!secret) throw new Error("Invalid secret");
+    // if (!doc) throw new Error("Invalid doc path");
+    // if (!key) throw new Error("Invalid key");
+    // if (!secret) throw new Error("Invalid secret");
 
     await ymlLint.lintFile(doc).catch((err) => {
       throw new Error(err);
@@ -27,20 +27,20 @@ async function testing() {
         github: secret,
       },
     };
-    const { data } = await axios
-      .post(
-        "http://98c2-103-252-164-1.ngrok.io/github/update-doc",
-        {
-          key,
-          file,
-          type,
-        },
-        config
-      )
-      .catch((err) => {
-        throw new Error(err.response.data);
-      });
-    console.log(data);
+    // const { data } = await axios
+    //   .post(
+    //     "http://98c2-103-252-164-1.ngrok.io/github/update-doc",
+    //     {
+    //       key,
+    //       file,
+    //       type,
+    //     },
+    //     config
+    //   )
+    //   .catch((err) => {
+    //     throw new Error(err.response.data);
+    //   });
+    // console.log(data);
   } catch (err) {
     core.setFailed(err.stack || String(err));
   }
