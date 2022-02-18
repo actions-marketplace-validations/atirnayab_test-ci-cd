@@ -1,28 +1,47 @@
 const core = require("@actions/core");
 const axios = require("axios").default;
+const ymlLint = require("yaml-lint");
 const { readFileSync } = require("fs");
 
-console.log("inside");
-const value = core.getInput("token");
-const doc = core.getInput("file");
-const testtoken = core.getInput("testtoken");
-const testtoken2 = core.getInput("testtoken2");
+const doc = core.getInput("doc");
+const key = core.getInput("key");
+const secret = core.getInput("key");
 
-console.log(value, 3524);
-// const file = readFileSync(doc);
+const file = readFileSync(doc);
 
 async function testing() {
-  await axios
-    .post("http://de57-103-252-164-15.ngrok.io", {
-      value,
-      testtoken,
-      testtoken2,
-      test: 123,
-    })
-    .then(function (response) {
-      // handle success
-      console.log(response.data);
+  try {
+    if (!doc) throw "Invalid doc path";
+    if (!key) throw "Invalid key";
+    if (!secret) throw "Invalid token";
+
+    await ymlLint.lintFile(doc).catch((err) => {
+      throw new Error(err);
     });
+
+    const type = doc.split(".")[1];
+    let config = {
+      headers: {
+        github: secret,
+      },
+    };
+    const { data } = await axios
+      .post(
+        "http://98c2-103-252-164-1.ngrok.io/github/update-doc",
+        {
+          key,
+          file,
+          type,
+        },
+        config
+      )
+      .catch((err) => {
+        throw new Error(err.response.data);
+      });
+    console.log(data);
+  } catch (err) {
+    console.log(err.stack || String(err));
+  }
 }
 
 testing();

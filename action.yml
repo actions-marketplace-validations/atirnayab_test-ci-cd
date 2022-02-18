@@ -1,20 +1,14 @@
 name: atirnayab document upload
 description: this is sample to test market place
 inputs:
-  file:
-    description: "Relative path to the documentation file"
-    required: true
   doc:
     description: "Documentation id. Can be found in the documentation settings on"
     required: true
-  token:
+  key:
     description: "Documentation token. Can be found in the documentation settings on"
     required: true
-  testtoken:
-    description: "custom token"
-    required: true
-  testtoken2:
-    description: "custom token"
+  secret:
+    description: "github secret key"
     required: true
 jobs:
   installNode:
