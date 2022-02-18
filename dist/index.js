@@ -11010,12 +11010,10 @@ const secret = core.getInput("key");
 const file = readFileSync(doc);
 
 async function testing() {
-  console.log(doc, key, secret);
-
   try {
-    // if (!doc) throw new Error("Invalid doc path");
-    // if (!key) throw new Error("Invalid key");
-    // if (!secret) throw new Error("Invalid secret");
+    if (!doc) throw new Error("Invalid doc path");
+    if (!key) throw new Error("Invalid key");
+    if (!secret) throw new Error("Invalid secret");
 
     await ymlLint.lintFile(doc).catch((err) => {
       throw new Error(err);
