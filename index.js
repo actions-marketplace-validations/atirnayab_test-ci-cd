@@ -11,7 +11,10 @@ const file = readFileSync(doc);
 
 async function testing() {
   if (!doc) throw new Error("Invalid doc path");
-  if (!key) throw new Error("Invalid key");
+  if (!key) {
+    throw new Error("Invalid key");
+    process.exit(1);
+  }
   if (!secret) throw new Error("Invalid token");
 
   await ymlLint.lintFile(doc).catch((err) => {
