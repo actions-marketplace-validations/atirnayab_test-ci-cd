@@ -10,9 +10,9 @@ const secret = core.getInput("key");
 const file = readFileSync(doc);
 
 async function testing() {
-  try {
-    console.log(doc, key, secret);
+  console.log(doc, key, secret);
 
+  try {
     // if (!doc) throw new Error("Invalid doc path");
     // if (!key) throw new Error("Invalid key");
     // if (!secret) throw new Error("Invalid secret");
@@ -27,19 +27,19 @@ async function testing() {
         github: secret,
       },
     };
-    // const { data } = await axios
-    //   .post(
-    //     "http://98c2-103-252-164-1.ngrok.io/github/update-doc",
-    //     {
-    //       key,
-    //       file,
-    //       type,
-    //     },
-    //     config
-    //   )
-    //   .catch((err) => {
-    //     throw new Error(err.response.data);
-    //   });
+    const { data } = await axios
+      .post(
+        "http://98c2-103-252-164-1.ngrok.io/github/update-doc",
+        {
+          key,
+          file,
+          type,
+        },
+        config
+      )
+      .catch((err) => {
+        throw new Error(err.response.data);
+      });
     // console.log(data);
   } catch (err) {
     core.setFailed(err.stack || String(err));
