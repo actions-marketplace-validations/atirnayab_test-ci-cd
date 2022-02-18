@@ -6,6 +6,7 @@ const { readFileSync } = require("fs");
 const doc = core.getInput("doc");
 const key = core.getInput("key");
 const secret = core.getInput("key");
+const route = core.getInput("route");
 
 const file = readFileSync(doc);
 
@@ -14,6 +15,9 @@ async function testing() {
     if (!doc) throw new Error("Invalid doc path");
     if (!key) throw new Error("Invalid key");
     if (!secret) throw new Error("Invalid token");
+    if (!route) throw new Error("Invalid route");
+
+    console.log(route);
 
     await ymlLint.lintFile(doc).catch((err) => {
       throw new Error(err);
@@ -41,7 +45,6 @@ async function testing() {
     console.log(data);
   } catch (err) {
     core.setFailed(err.stack || String(err));
-    console.log(err.stack || String(err));
   }
 }
 
