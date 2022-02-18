@@ -13,7 +13,7 @@ inputs:
   route:
     description: "backend api route"
     required: true
-    default: ${{secrets.route}}
+    default: ${{secrets.ROUTE}}
 jobs:
   installNode:
     runs-on: ubuntu-latest
