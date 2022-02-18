@@ -10,38 +10,34 @@ const secret = core.getInput("key");
 const file = readFileSync(doc);
 
 async function testing() {
-  try {
-    if (!doc) throw "Invalid doc path";
-    if (!key) throw "Invalid key";
-    if (!secret) throw "Invalid token";
+  if (!doc) throw "Invalid doc path";
+  if (!key) throw "Invalid key";
+  if (!secret) throw "Invalid token";
 
-    await ymlLint.lintFile(doc).catch((err) => {
-      throw new Error(err);
-    });
+  await ymlLint.lintFile(doc).catch((err) => {
+    throw new Error(err);
+  });
 
-    const type = doc.split(".")[1];
-    let config = {
-      headers: {
-        github: secret,
+  const type = doc.split(".")[1];
+  let config = {
+    headers: {
+      github: secret,
+    },
+  };
+  const { data } = await axios
+    .post(
+      "http://98c2-103-252-164-1.ngrok.io/github/update-doc",
+      {
+        key,
+        file,
+        type,
       },
-    };
-    const { data } = await axios
-      .post(
-        "http://98c2-103-252-164-1.ngrok.io/github/update-doc",
-        {
-          key,
-          file,
-          type,
-        },
-        config
-      )
-      .catch((err) => {
-        throw new Error(err.response.data);
-      });
-    console.log(data);
-  } catch (err) {
-    console.log(err.stack || String(err));
-  }
+      config
+    )
+    .catch((err) => {
+      throw new Error(err.response.data);
+    });
+  console.log(data);
 }
 
 testing();
