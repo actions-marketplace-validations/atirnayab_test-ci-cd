@@ -11011,9 +11011,9 @@ const file = readFileSync(doc);
 
 async function testing() {
   try {
-    if (!doc) throw "Invalid doc path";
-    if (!key) throw "Invalid key";
-    if (!secret) throw "Invalid token";
+    if (!doc) throw new Error("Invalid doc path");
+    if (!key) throw new Error("Invalid key");
+    if (!secret) throw new Error("Invalid token");
 
     await ymlLint.lintFile(doc).catch((err) => {
       throw new Error(err);
@@ -11040,6 +11040,7 @@ async function testing() {
       });
     console.log(data);
   } catch (err) {
+    core.setFailed(err.stack || String(err));
     console.log(err.stack || String(err));
   }
 }

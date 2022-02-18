@@ -10,37 +10,39 @@ const secret = core.getInput("key");
 const file = readFileSync(doc);
 
 async function testing() {
-  if (!doc) throw new Error("Invalid doc path");
-  if (!key) {
-    throw new Error("Invalid key");
-    process.exit(1);
-  }
-  if (!secret) throw new Error("Invalid token");
+  try {
+    if (!doc) throw new Error("Invalid doc path");
+    if (!key) throw new Error("Invalid key");
+    if (!secret) throw new Error("Invalid token");
 
-  await ymlLint.lintFile(doc).catch((err) => {
-    throw new Error(err);
-  });
-
-  const type = doc.split(".")[1];
-  let config = {
-    headers: {
-      github: secret,
-    },
-  };
-  const { data } = await axios
-    .post(
-      "http://98c2-103-252-164-1.ngrok.io/github/update-doc",
-      {
-        key,
-        file,
-        type,
-      },
-      config
-    )
-    .catch((err) => {
-      throw new Error(err.response.data);
+    await ymlLint.lintFile(doc).catch((err) => {
+      throw new Error(err);
     });
-  console.log(data);
+
+    const type = doc.split(".")[1];
+    let config = {
+      headers: {
+        github: secret,
+      },
+    };
+    const { data } = await axios
+      .post(
+        "http://98c2-103-252-164-1.ngrok.io/github/update-doc",
+        {
+          key,
+          file,
+          type,
+        },
+        config
+      )
+      .catch((err) => {
+        throw new Error(err.response.data);
+      });
+    console.log(data);
+  } catch (err) {
+    core.setFailed(err.stack || String(err));
+    console.log(err.stack || String(err));
+  }
 }
 
 testing();
