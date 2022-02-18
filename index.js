@@ -5,7 +5,7 @@ const { readFileSync } = require("fs");
 
 const doc = core.getInput("doc");
 const key = core.getInput("key");
-const secret = core.getInput("key");
+const secret = core.getInput("secret");
 
 const file = readFileSync(doc);
 
