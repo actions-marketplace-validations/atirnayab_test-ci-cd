@@ -12,7 +12,7 @@ const file = readFileSync(doc);
 async function testing() {
   try {
     if (!doc) throw new Error("add doc path in workflow file");
-    if (!key) throw new Error("add key in github secret");
+    if (!key) throw new Error("add DOCUMENT_KEY in github secret");
     if (!secret) throw new Error("add secret in github secret");
 
     await ymlLint.lintFile(doc).catch((err) => {
