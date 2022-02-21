@@ -1,13 +1,13 @@
 name: atirnayab document upload
 description: this is sample to test market place
 inputs:
-  doc:
-    description: "Documentation id. Can be found in the documentation settings on"
+  PATH:
+    description: "file path"
     required: true
-  document_key:
-    description: "Documentation token. Can be found in the documentation settings on"
+  PROJECT_KEY:
+    description: "project key"
     required: true
-  secret:
+  SECRET:
     description: "github secret key"
     required: true
 runs:

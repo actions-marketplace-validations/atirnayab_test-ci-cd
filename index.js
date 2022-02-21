@@ -3,9 +3,9 @@ const axios = require("axios").default;
 const ymlLint = require("yaml-lint");
 const { readFileSync } = require("fs");
 
-const doc = core.getInput("doc");
-const key = core.getInput("document_key");
-const secret = core.getInput("secret");
+const doc = core.getInput("PATH");
+const key = core.getInput("PROJECT_KEY");
+const secret = core.getInput("SECRET");
 
 const file = readFileSync(doc);
 
