@@ -3,23 +3,23 @@ const axios = require("axios").default;
 const ymlLint = require("yaml-lint");
 const { readFileSync } = require("fs");
 
-const doc = core.getInput("PATH");
-const key = core.getInput("PROJECT_KEY");
+const path = core.getInput("PATH");
+const projectKey = core.getInput("PROJECT_KEY");
 const secret = core.getInput("SECRET");
 
-const file = readFileSync(doc);
+const file = readFileSync(path);
 
 async function testing() {
   try {
-    if (!doc) throw new Error("add doc path in workflow file");
-    if (!key) throw new Error("add DOCUMENT_KEY in github secret");
+    if (!path) throw new Error("add doc path in workflow file");
+    if (!projectKey) throw new Error("add DOCUMENT_KEY in github secret");
     if (!secret) throw new Error("add secret in github secret");
 
-    await ymlLint.lintFile(doc).catch((err) => {
+    await ymlLint.lintFile(path).catch((err) => {
       throw new Error(err);
     });
 
-    const type = doc.split(".")[1];
+    const type = path.split(".")[1];
     let config = {
       headers: {
         github: secret,
@@ -27,9 +27,9 @@ async function testing() {
     };
     const { data } = await axios
       .post(
-        "https://9891-103-252-164-36.ngrok.io/github/update-doc",
+        "http://0b7a-103-252-164-36.ngrok.io/github/update-doc",
         {
-          key,
+          key: projectKey,
           file,
           type,
         },
@@ -38,6 +38,7 @@ async function testing() {
       .catch((err) => {
         throw new Error(err.response.data);
       });
+    console.log(data);
   } catch (err) {
     core.setFailed(err.stack || String(err));
   }
