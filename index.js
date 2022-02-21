@@ -25,10 +25,17 @@ async function testing() {
         github: secret,
       },
     };
+<<<<<<< HEAD
 
     const { data } = await axios
       .post(
         process.env.ROUTE,
+=======
+    console.log("$%#$%$#adsfsasdfassafdddd")
+    const { data } = await axios
+      .post(
+        "https://9891-103-252-164-36.ngrok.io/github/update-doc",
+>>>>>>> 01c2efc29384b29e6d9547e14ef12578035f742a
         {
           key,
           file,
@@ -39,7 +46,6 @@ async function testing() {
       .catch((err) => {
         throw new Error(err.response.data);
       });
-    // console.log(data);
   } catch (err) {
     core.setFailed(err.stack || String(err));
   }
