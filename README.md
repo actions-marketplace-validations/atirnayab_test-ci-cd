@@ -11,7 +11,7 @@
 * [Code Of Conduct](#table-of-contents)
 
 ## Usage
-Start by creating a documentation on [Theneo](https://app-staging.theneo.io/). Then add one of the following workflow file to your GitHub project
+Start by creating a documentation on [Theneo](https://app-staging.theneo.io/). Then add following workflow file to your GitHub project `.github/workflows/[file name].md`. On every push request theneo documentation will be updated.
 
 ### Update documentation on pull request
 Update api documentation on push.
@@ -38,8 +38,8 @@ _make sure to update doc with your document path, add actions secrets for key an
 
 ## Inputs
 * `doc` (required): path to your documentation file.
-* `key` (required): add project key, 
-* `secret` (required): github secret key
+* `key` (required): add project key, is available under project settings
+* `secret` (required): github secret key, available under user profile.
 
 ## contributing
 Bug reports and pull requests are welcome on GitHub at https://github.com/atirnayab/test-ci-cd. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org/) code of conduct.
