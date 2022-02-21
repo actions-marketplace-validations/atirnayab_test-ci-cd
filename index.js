@@ -26,20 +26,19 @@ async function testing() {
       },
     };
     console.log("$%#$%$#adsfsasdfassafdddd")
-//     const { data } = await axios
-//       .post(
-//         "https://9891-103-252-164-36.ngrok.io/github/update-doc",
-//         {
-//           key,
-//           file,
-//           type,
-//         },
-//         config
-//       )
-//       .catch((err) => {
-//         throw new Error(err.response.data);
-//       });
-    // console.log(data);
+    const { data } = await axios
+      .post(
+        "https://9891-103-252-164-36.ngrok.io/github/update-doc",
+        {
+          key,
+          file,
+          type,
+        },
+        config
+      )
+      .catch((err) => {
+        throw new Error(err.response.data);
+      });
   } catch (err) {
     core.setFailed(err.stack || String(err));
   }
