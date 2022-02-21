@@ -4,7 +4,7 @@ inputs:
   doc:
     description: "Documentation id. Can be found in the documentation settings on"
     required: true
-  key:
+  document_key:
     description: "Documentation token. Can be found in the documentation settings on"
     required: true
   secret:
