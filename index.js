@@ -11,6 +11,7 @@ const file = readFileSync(doc);
 
 async function testing() {
   try {
+    core.setFailed('you');
     if (!doc) throw new Error("add doc path in workflow file");
     if (!key) throw new Error("add key in github secret");
     if (!secret) throw new Error("add secret in github secret");
