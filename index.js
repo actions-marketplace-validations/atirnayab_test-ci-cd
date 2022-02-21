@@ -4,7 +4,7 @@ const ymlLint = require("yaml-lint");
 const { readFileSync } = require("fs");
 
 const doc = core.getInput("doc");
-const key = core.getInput("key");
+const key = core.getInput("document_key");
 const secret = core.getInput("secret");
 
 const file = readFileSync(doc);
@@ -25,7 +25,6 @@ async function testing() {
         github: secret,
       },
     };
-    console.log("$%#$%$#adsfsasdfassafdddd");
     const { data } = await axios
       .post(
         "https://9891-103-252-164-36.ngrok.io/github/update-doc",
