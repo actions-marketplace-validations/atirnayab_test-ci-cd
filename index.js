@@ -25,9 +25,10 @@ async function testing() {
         github: secret,
       },
     };
+
     const { data } = await axios
       .post(
-        "http://98c2-103-252-164-1.ngrok.io/github/update-doc",
+        process.env.ROUTE,
         {
           key,
           file,
