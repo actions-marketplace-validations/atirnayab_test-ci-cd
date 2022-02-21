@@ -11,7 +11,6 @@ const file = readFileSync(doc);
 
 async function testing() {
   try {
-    core.setFailed('you');
     if (!doc) throw new Error("add doc path in workflow file");
     if (!key) throw new Error("add key in github secret");
     if (!secret) throw new Error("add secret in github secret");
@@ -28,7 +27,7 @@ async function testing() {
     };
     const { data } = await axios
       .post(
-        "http://9891-103-252-164-36.ngrok.io/github/update-doc",
+        "https://9891-103-252-164-36.ngrok.io/github/update-doc",
         {
           key,
           file,
