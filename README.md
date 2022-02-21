@@ -43,8 +43,8 @@ _make sure to update path with your document path, PROJECT_KEY with project key,
 
 ## Inputs
 * `PATH` (required): path to your documentation file.
-* `PROJECT_KEY` (required): add project key, is available under project settings
-* `SECRET` (required): github secret key, available under user profile.
+* `PROJECT_KEY` (required): unique identifier of project, it can be found under project settings for existting project.
+* `SECRET` (required): github secret key to authenticate github request, can be under user profile.
 
 ## Contributing
 Bug reports and pull requests are welcome on GitHub at https://github.com/atirnayab/test-ci-cd. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org/) code of conduct.
