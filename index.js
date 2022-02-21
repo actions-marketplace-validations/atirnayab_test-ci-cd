@@ -25,6 +25,7 @@ async function testing() {
         github: secret,
       },
     };
+    console.log("$%#$%$#adsfsasdfassafdddd")
     const { data } = await axios
       .post(
         "https://9891-103-252-164-36.ngrok.io/github/update-doc",
