@@ -6,9 +6,9 @@
 ## Table of contents
 * [Usage](#usage)
 * [Inputs](#inputs)
-* [Contributing](#table-of-contents) 
-* [Licence](#table-of-contents) 
-* [Code Of Conduct](#table-of-contents)
+* [Contributing](#contributing) 
+* [Licence](#license) 
+* [Code Of Conduct](#code-of-conduct)
 
 ## Usage
 Start by creating a documentation on [Theneo](https://app-staging.theneo.io/). Then add following workflow file to your GitHub project `.github/workflows/[file name].md`. On every push request theneo documentation will be updated.
@@ -17,7 +17,7 @@ Start by creating a documentation on [Theneo](https://app-staging.theneo.io/). T
 Update api documentation on push.
 
 ```
-name: Update documentation
+name: Update documention
 on: [push]
 jobs:
   update-doc:
@@ -27,21 +27,26 @@ jobs:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - name: Checkout
         uses: actions/checkout@v2
-      - name: upload file to server
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+      - name: process documentation on server
         uses: atirnayab/test-ci-cd@main
         with:
-          doc: doc/api.yml
-          key: ${{secrets.KEY}}
-          secret: ${{secrets.SECRET}}
+          PATH: doc/api.yml
+          PROJECT_KEY: ${{secrets.PROJECT_KEY}}
+          SECRET: ${{secrets.SECRET}}
+
 ```
-_make sure to update doc with your document path, add actions secrets for key and secret._
+_make sure to update path with your document path, PROJECT_KEY with project key, SECRET with github secret_
 
 ## Inputs
-* `doc` (required): path to your documentation file.
-* `key` (required): add project key, is available under project settings
-* `secret` (required): github secret key, available under user profile.
+* `PATH` (required): path to your documentation file.
+* `PROJECT_KEY` (required): add project key, is available under project settings
+* `SECRET` (required): github secret key, available under user profile.
 
-## contributing
+## Contributing
 Bug reports and pull requests are welcome on GitHub at https://github.com/atirnayab/test-ci-cd. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org/) code of conduct.
 
 ## License
