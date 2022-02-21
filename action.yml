@@ -1,7 +1,5 @@
 name: atirnayab document upload
 description: this is sample to test market place
-env:
-  ROUTE: ${{ env.route }}
 inputs:
   doc:
     description: "Documentation id. Can be found in the documentation settings on"
