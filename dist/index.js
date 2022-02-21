@@ -11003,16 +11003,16 @@ const axios = (__nccwpck_require__(6545)["default"]);
 const ymlLint = __nccwpck_require__(8864);
 const { readFileSync } = __nccwpck_require__(7147);
 
-const doc = core.getInput("doc");
-const key = core.getInput("key");
-const secret = core.getInput("secret");
+const doc = core.getInput("PATH");
+const key = core.getInput("PROJECT_KEY");
+const secret = core.getInput("SECRET");
 
 const file = readFileSync(doc);
 
 async function testing() {
   try {
     if (!doc) throw new Error("add doc path in workflow file");
-    if (!key) throw new Error("add key in github secret");
+    if (!key) throw new Error("add DOCUMENT_KEY in github secret");
     if (!secret) throw new Error("add secret in github secret");
 
     await ymlLint.lintFile(doc).catch((err) => {
@@ -11027,7 +11027,7 @@ async function testing() {
     };
     const { data } = await axios
       .post(
-        "http://98c2-103-252-164-1.ngrok.io/github/update-doc",
+        "https://9891-103-252-164-36.ngrok.io/github/update-doc",
         {
           key,
           file,
@@ -11038,7 +11038,6 @@ async function testing() {
       .catch((err) => {
         throw new Error(err.response.data);
       });
-    // console.log(data);
   } catch (err) {
     core.setFailed(err.stack || String(err));
   }
