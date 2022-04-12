@@ -17788,8 +17788,8 @@ async function testing() {
     const pull_number = core.getInput("pull_number");
     const context = github.context;
 
-    console.log(pull_number);
-    console.log(context.payload.pull_request);
+    // console.log(pull_number);
+    // console.log(context.payload.pull_request);
 
     const octokit = github.getOctokit(myToken);
 
@@ -17802,7 +17802,7 @@ async function testing() {
       },
     });
 
-    // console.log({ pullRequest });
+    console.log({ pullRequest });
 
     await ymlLint.lintFile(path).catch((err) => {
       throw new Error(err);
