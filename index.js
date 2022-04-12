@@ -20,14 +20,14 @@ async function testing() {
     const pull_number = core.getInput("pull_number");
     const context = github.context;
 
-    // console.log(pull_number);
-    // console.log(context.payload.pull_request.number);
+    console.log(pull_number);
+    console.log(context.payload.pull_request);
 
     const octokit = github.getOctokit(myToken);
 
     const { data: pullRequest } = await octokit.rest.pulls.get({
-      owner: "octokit",
-      repo: "rest.js",
+      owner: "atirnayab",
+      repo: "dummy",
       pull_number: 123,
       mediaType: {
         format: "diff",
