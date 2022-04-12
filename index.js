@@ -20,7 +20,7 @@ async function testing() {
     const pull_number = core.getInput("pull_number");
     const context = github.context;
 
-    console.log(context.payload.pull_request);
+    console.log(pull_number);
 
     const octokit = github.getOctokit(myToken);
 

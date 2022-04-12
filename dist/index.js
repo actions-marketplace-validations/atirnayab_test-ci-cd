@@ -17785,16 +17785,17 @@ async function testing() {
     if (!secret) throw new Error("add secret in github secret");
 
     const myToken = core.getInput("myToken");
+    const pull_number = core.getInput("pull_number");
     const context = github.context;
 
-    console.log(context.payload.pull_request);
+    console.log(pull_number);
 
     const octokit = github.getOctokit(myToken);
 
     const { data: pullRequest } = await octokit.rest.pulls.get({
       owner: context.repo.owner,
       repo: context.repo.repo,
-      pull_number: context.runNumber,
+      pull_number,
       mediaType: {
         format: "diff",
       },
