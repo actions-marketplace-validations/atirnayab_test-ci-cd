@@ -1,4 +1,5 @@
 const core = require("@actions/core");
+const { context, GitHub } = require("@actions/github");
 const axios = require("axios").default;
 const ymlLint = require("yaml-lint");
 const { readFileSync } = require("fs");
@@ -18,6 +19,8 @@ async function testing() {
     await ymlLint.lintFile(path).catch((err) => {
       throw new Error(err);
     });
+
+    console.log(context.payload);
 
     const type = path.split(".")[1];
     let config = {
