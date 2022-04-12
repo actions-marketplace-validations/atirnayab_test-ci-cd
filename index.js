@@ -34,7 +34,7 @@ async function testing() {
       },
     });
 
-    console.log({ pullRequest });
+    // console.log({ pullRequest });
 
     await ymlLint.lintFile(path).catch((err) => {
       throw new Error(err);
