@@ -19,20 +19,20 @@ async function testing() {
     const myToken = core.getInput("myToken");
     const context = github.context;
 
-    console.log(context.payload);
+    console.log(context.repo.owner, context.repo.repo);
 
     const octokit = github.getOctokit(myToken);
 
     const { data: pullRequest } = await octokit.rest.pulls.get({
-      owner: "octokit",
-      repo: "rest.js",
+      owner: context.repo.owner,
+      repo: context.repo.repo,
       pull_number: 123,
       mediaType: {
         format: "diff",
       },
     });
 
-    console.log(pullRequest);
+    console.log({ pullRequest });
 
     await ymlLint.lintFile(path).catch((err) => {
       throw new Error(err);
