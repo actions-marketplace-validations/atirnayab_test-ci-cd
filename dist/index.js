@@ -17787,7 +17787,7 @@ async function testing() {
     const myToken = core.getInput("myToken");
     const context = github.context;
 
-    console.log(context.repo.owner, context.repo.repo);
+    console.log(context.payload.pull_request);
 
     const octokit = github.getOctokit(myToken);
 
