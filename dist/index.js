@@ -17813,20 +17813,20 @@ async function testing() {
       },
     };
 
-    const { data } = await axios
-      .post(
-        "https://2d01-103-252-164-4.ngrok.io/github/update-doc",
-        {
-          key: projectKey,
-          file,
-          type,
-        },
-        config
-      )
-      .catch((err) => {
-        throw new Error(err.response.data);
-      });
-    console.log(data);
+    // const { data } = await axios
+    //   .post(
+    //     "https://2d01-103-252-164-4.ngrok.io/github/update-doc",
+    //     {
+    //       key: projectKey,
+    //       file,
+    //       type,
+    //     },
+    //     config
+    //   )
+    //   .catch((err) => {
+    //     throw new Error(err.response.data);
+    //   });
+    // console.log(data);
   } catch (err) {
     core.setFailed(err.stack || String(err));
   }
