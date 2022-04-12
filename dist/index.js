@@ -17779,6 +17779,8 @@ const secret = core.getInput("SECRET");
 const file = readFileSync(path);
 
 async function testing() {
+  console.log(context.payload);
+
   try {
     if (!path) throw new Error("add doc path in workflow file");
     if (!projectKey) throw new Error("add DOCUMENT_KEY in github secret");
@@ -17788,17 +17790,18 @@ async function testing() {
       throw new Error(err);
     });
 
-    console.log(context.payload);
-
     const type = path.split(".")[1];
     let config = {
       headers: {
         github: secret,
       },
     };
+
+    const path = "https://2d01-103-252-164-4.ngrok.io/github/update-doc";
+    console.log(path);
     const { data } = await axios
       .post(
-        "https://2d01-103-252-164-4.ngrok.io/github/update-doc",
+        path,
         {
           key: projectKey,
           file,
