@@ -17767,7 +17767,7 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const core = __nccwpck_require__(2186);
-const { context, GitHub } = __nccwpck_require__(5438);
+const github = __nccwpck_require__(5438);
 const axios = (__nccwpck_require__(6545)["default"]);
 const ymlLint = __nccwpck_require__(8864);
 const { readFileSync } = __nccwpck_require__(7147);
@@ -17784,35 +17784,27 @@ async function testing() {
     if (!projectKey) throw new Error("add DOCUMENT_KEY in github secret");
     if (!secret) throw new Error("add secret in github secret");
 
+    const myToken = core.getInput("myToken");
+    const context = github.context;
+
+    console.log(context.payload);
+
+    const octokit = github.getOctokit(myToken);
+
+    const { data: pullRequest } = await octokit.rest.pulls.get({
+      owner: "octokit",
+      repo: "rest.js",
+      pull_number: 123,
+      mediaType: {
+        format: "diff",
+      },
+    });
+
+    console.log(pullRequest);
+
     await ymlLint.lintFile(path).catch((err) => {
       throw new Error(err);
     });
-    let head, base;
-    const client = new GitHub(core.getInput("token"));
-    const eventName = context.eventName;
-    switch (eventName) {
-      case "pull_request":
-        base = context.payload.pull_request?.base?.sha;
-        head = context.payload.pull_request?.head?.sha;
-        break;
-      case "push":
-        base = context.payload.before;
-        head = context.payload.after;
-        break;
-      default:
-        core.setFailed(
-          `This action only supports pull requests and pushes, ${context.eventName} events are not supported. ` +
-            "Please submit an issue on this action's GitHub repo if you believe this in correct."
-        );
-    }
-    const response = await client.repos.compareCommits({
-      base,
-      head,
-      owner: context.repo.owner,
-      repo: context.repo.repo,
-    });
-
-    console.log(response);
 
     const type = path.split(".")[1];
     let config = {
