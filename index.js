@@ -21,13 +21,14 @@ async function testing() {
     const context = github.context;
 
     console.log(pull_number);
-    console.log(context.payload);
+    console.log(context.payload.pull_request);
 
     const octokit = github.getOctokit(myToken);
 
     const { data: pullRequest } = await octokit.rest.pulls.get({
       owner: context.repo.owner,
       repo: context.repo.repo,
+      pull_number,
       mediaType: {
         format: "diff",
       },
