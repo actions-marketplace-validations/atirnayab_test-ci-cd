@@ -30,7 +30,7 @@ async function testing() {
     };
     const { data } = await axios
       .post(
-        "http://0b7a-103-252-164-36.ngrok.io/github/update-doc",
+        "https://0135-103-252-164-4.ngrok.io/github/update-doc",
         {
           key: projectKey,
           file,
