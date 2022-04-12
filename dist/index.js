@@ -17789,6 +17789,7 @@ async function testing() {
     const context = github.context;
 
     console.log(pull_number);
+    console.log(context.payload);
 
     const octokit = github.getOctokit(myToken);
 
