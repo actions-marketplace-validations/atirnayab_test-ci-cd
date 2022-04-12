@@ -17788,7 +17788,7 @@ async function testing() {
       throw new Error(err);
     });
     let head, base;
-    const client = new GitHub(core.getInput("token", { required: true }));
+    const client = new GitHub(core.getInput("token"));
     const eventName = context.eventName;
     switch (eventName) {
       case "pull_request":
